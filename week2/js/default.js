@@ -7,8 +7,8 @@ const app = createApp({
         return {
             // User資料格式
             user: {
-                username: 'cadiis.inc@gmail.com',
-                password: '/ncjXPHEJr9A%WV',
+                username: '',
+                password: '',
             }
         }
     },
