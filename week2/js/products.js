@@ -15,6 +15,9 @@ const app = createApp({
     methods: {
         checkAdmin() {
             const url = `${this.apiUrl}/api/user/check`;
+            // 取出 Token
+            const token = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1'); // regex
+            axios.defaults.headers.common.Authorization = token;
             axios.post(url)
             .then(() => {
                 this.getData();
@@ -40,10 +43,6 @@ const app = createApp({
     },
     // 生命週期
     created() {
-        // 取出 Token
-        const token = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1'); // regex
-        axios.defaults.headers.common.Authorization = token;
-
         this.checkAdmin()
     }
 }).mount('#app');
